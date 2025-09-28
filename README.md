@@ -5,6 +5,26 @@ This repository includes a library of data structures implemented in C from scra
 - [cvector](#cvector): a dynamic array of pointers.
 - cbtree: TODO
 
+## Repository structure
+
+The repository is organized with each DS holding its own directory (module).
+
+## Setup
+
+This repository relies on [Nix Flakes](https://nixos.wiki/wiki/Flakes) and [direnv](https://direnv.net/).
+Just `cd` into this repository if you have both setup and it will setup your `devShell` for you.
+
+## Testing
+
+To run a test on a datastructure, run the following:
+
+```sh
+# specific test
+just run-test NAME_DS
+# all tests
+just run-tests
+```
+
 ## Design of each data structure
 
 ### cvector

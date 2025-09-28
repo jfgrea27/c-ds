@@ -12,7 +12,11 @@
         pkgs = import nixpkgs { inherit system; };
       in {
         devShells.default = pkgs.mkShell {
-          packages = [ pkgs.just ];
+          packages = [ 
+            pkgs.just 
+            pkgs.stdenv 
+            pkgs.gcc 
+            ];
         };
       });
 }
