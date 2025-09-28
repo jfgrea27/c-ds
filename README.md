@@ -32,11 +32,11 @@ just run-tests
 `CVector` defined below
 
 ```c
-typedef struct {
+struct CVector {
   void **data;
   size_t size;
   size_t capacity;
-} CVector;
+};
 ```
 
 holds an array of pointers on the heap. This allows for allocation of any data type.

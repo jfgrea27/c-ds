@@ -6,7 +6,7 @@
 
 void test_cvector_create() {
     printf("Testing test_cvector_create\n");
-    CVector *vec = cvector_create();
+    struct CVector *vec = cvector_create();
 
     if (vec == NULL) {
         printf("FAILED: Failed to create vector\n");
@@ -29,7 +29,7 @@ void test_cvector_create() {
 
 void test_cvector_push_initial_capacity() {
     printf("Testing test_cvector_push_initial_capacity\n");
-    CVector *vec = cvector_create();
+    struct CVector *vec = cvector_create();
     cvector_push(vec, "Hello");
     cvector_push(vec, "World");
     cvector_push(vec, "!");
@@ -51,7 +51,7 @@ void test_cvector_push_initial_capacity() {
 
 void test_cvector_push_double_capacity() {
     printf("Testing test_cvector_push_double_capacity\n");
-    CVector *vec = cvector_create();
+    struct CVector *vec = cvector_create();
     cvector_push(vec, "Hello");
     cvector_push(vec, "World");
     cvector_push(vec, "!");
@@ -75,7 +75,7 @@ void test_cvector_push_double_capacity() {
 
 void test_cvector_get() {
     printf("Testing test_cvector_get\n");
-    CVector *vec = cvector_create();
+    struct CVector *vec = cvector_create();
 
     cvector_push(vec, "Hello");
 
@@ -96,7 +96,7 @@ void test_cvector_get() {
 
 void test_cvector_set() {
     printf("Testing test_cvector_set\n");
-    CVector *vec = cvector_create();
+    struct CVector *vec = cvector_create();
     cvector_push(vec, "Hello");
     cvector_set(vec, 0, "World");
 
@@ -120,7 +120,7 @@ void test_cvector_set() {
 
 void test_cvector_delete_last_item() {
     printf("Testing test_cvector_delete_last_item\n");
-    CVector *vec = cvector_create();
+    struct CVector *vec = cvector_create();
     cvector_push(vec, "Hello");
     cvector_push(vec, "World");
     cvector_push(vec, "!");
@@ -153,7 +153,7 @@ void test_cvector_delete_last_item() {
 
 void test_cvector_delete_middle_item() {
     printf("Testing test_cvector_delete_middle_item\n");
-    CVector *vec = cvector_create();
+    struct CVector *vec = cvector_create();
     cvector_push(vec, "Hello");
     cvector_push(vec, "World");
     cvector_push(vec, "!");
@@ -188,7 +188,7 @@ void test_cvector_delete_middle_item() {
 
 void test_cvector_delete_out_of_bounds() {
     printf("Testing test_cvector_delete_out_of_bounds\n");
-    CVector *vec = cvector_create();
+    struct CVector *vec = cvector_create();
     cvector_push(vec, "Hello");
     cvector_push(vec, "World");
     cvector_push(vec, "!");
@@ -210,7 +210,7 @@ void test_cvector_delete_out_of_bounds() {
 
 void test_cvector_size() {
     printf("Testing test_cvector_size\n");
-    CVector *vec = cvector_create();
+    struct CVector *vec = cvector_create();
     cvector_push(vec, "Hello");
     cvector_push(vec, "World");
     cvector_push(vec, "!");
