@@ -58,3 +58,23 @@ Notes:
 
 A full example of the `CVector` API in action can be seen in `src/cvector/main.c`.
 
+### clinklist
+
+
+`CLinkedList` defined below:
+
+```c
+struct CLinkedList {
+    void *data;
+    struct CLinkedList *next;
+};
+```
+
+holds a pointer to some data on the heap and a poniter to the next link in the list. This allows for allocation of any date type.
+
+Notes:
+- Elements should be heaped; `CLinkedList` does not allow adding stack elements.
+- Elements ca nbe added, updated, deleted.
+
+A full example of the `CLinkedLIst` API in action can be seen in `src/clinklist/main.c`.
+
