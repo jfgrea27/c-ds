@@ -16,7 +16,10 @@
             pkgs.just 
             pkgs.stdenv 
             pkgs.gcc 
-            ];
+          ] ++ pkgs.lib.optionals (!pkgs.stdenv.isDarwin) [
+            # valgrind is not available on latest darwin
+            pkgs.valgrind
+          ];
         };
       });
 }

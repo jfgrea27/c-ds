@@ -12,6 +12,12 @@ struct CVector* cvector_create() {
 }
 
 void cvector_free(struct CVector* vec) {
+    for (size_t i = 0; i < vec->size; i++) {
+        if (vec->data[i] != NULL) {
+            free((int*)vec->data[i]);
+            vec->data[i] = NULL;
+        }
+    }
     free(vec->data);
     free(vec);
 }
@@ -20,7 +26,7 @@ void maybe_double_capacity(struct CVector *vec) {
     // double the capacity if full.
     if (vec->size == vec->capacity) {
         vec->capacity *= 2;
-        void** new_data = realloc(vec->data, vec->capacity);
+        void** new_data = realloc(vec->data, vec->capacity * sizeof(void*));
         if (!new_data) {
             fprintf(stderr, "out of memory\n.");
             exit(1);
@@ -48,6 +54,12 @@ void cvector_set(struct CVector *vec, size_t index, void *item) {
     if (index >= vec->size) {
         return;
     }
+    // free the old item if it exists
+    if (vec->data[index] != NULL) {
+        free((int*)vec->data[index]);
+        vec->data[index] = NULL;
+    }
+    // set the new item
     vec->data[index] = item;
 }
 
@@ -55,6 +67,11 @@ void cvector_delete(struct CVector *vec, size_t index) {
 
     if (index >= vec->size) {
         return;
+    }
+    // free the item at index
+    if (vec->data[index] != NULL) {
+        free((int*)vec->data[index]);
+        vec->data[index] = NULL;
     }
     if (index == vec->size - 1) {
         vec->data[index] = NULL;
