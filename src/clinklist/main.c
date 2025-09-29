@@ -4,6 +4,10 @@
 #include <malloc.h>
 #include <stdio.h>
 
+/*
+* end-to-end test of cvector
+*/
+
 int main() {
     
     struct CLinkedList *ll = clinklist_create();
@@ -14,6 +18,7 @@ int main() {
     // add some items
     for (size_t i = 0; i < 10; i++) {
         int *value = malloc(sizeof(int));
+        *value = i;
         clinklist_push(ll, value);
     }
 

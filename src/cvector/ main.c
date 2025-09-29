@@ -20,6 +20,7 @@ int main(int argc, char *argv[]) {
     // add some items
     for (size_t i = 0; i < 10; i++) {
         int *value = malloc(sizeof(int));
+        *value = i;
         cvector_push(vec, value);
     }
   
