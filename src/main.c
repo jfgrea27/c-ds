@@ -6,7 +6,7 @@
         
 int main(int argc, char *argv[]) {
 
-    CVector *vec = cvector_create(sizeof(int), NULL);
+    struct CVector *vec = cvector_create(sizeof(int), NULL);
 
     cvector_free(vec);
 

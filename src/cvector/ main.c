@@ -12,7 +12,7 @@
         
 int main(int argc, char *argv[]) {
 
-    CVector *vec = cvector_create();
+    struct CVector *vec = cvector_create();
 
     // initial size:
     printf("CVector data size: %zu\n", (malloc_usable_size(vec->data)));
