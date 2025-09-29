@@ -30,9 +30,17 @@ void test_cvector_create() {
 void test_cvector_push_initial_capacity() {
     printf("Testing test_cvector_push_initial_capacity\n");
     CVector *vec = cvector_create();
-    cvector_push(vec, "Hello");
-    cvector_push(vec, "World");
-    cvector_push(vec, "!");
+
+    // add some from heap
+    char *str1 = malloc(6);
+    strcpy(str1, "Hello");
+    char *str2 = malloc(6);
+    strcpy(str2, "World");
+    char *str3 = malloc(2);
+    strcpy(str3, "!");
+    cvector_push(vec, str1);
+    cvector_push(vec, str2);
+    cvector_push(vec, str3);
 
     if (vec->size != 3) {
         printf("FAILED: Vector size is not 3\n");
@@ -52,11 +60,22 @@ void test_cvector_push_initial_capacity() {
 void test_cvector_push_double_capacity() {
     printf("Testing test_cvector_push_double_capacity\n");
     CVector *vec = cvector_create();
-    cvector_push(vec, "Hello");
-    cvector_push(vec, "World");
-    cvector_push(vec, "!");
-    cvector_push(vec, "?");
-    cvector_push(vec, ".");
+    // add some items to exceed initial capacity
+    char *str1 = malloc(6);
+    strcpy(str1, "Hello");
+    char *str2 = malloc(6);     
+    strcpy(str2, "World");
+    char *str3 = malloc(2);
+    strcpy(str3, "!");
+    char *str4 = malloc(2);
+    strcpy(str4, "?");
+    char *str5 = malloc(2);
+    strcpy(str5, ".");
+    cvector_push(vec, str1);
+    cvector_push(vec, str2);
+    cvector_push(vec, str3);
+    cvector_push(vec, str4);
+    cvector_push(vec, str5);
 
     if (vec->size != 5) {
         printf("FAILED: Vector size is not 5\n");
@@ -77,7 +96,9 @@ void test_cvector_get() {
     printf("Testing test_cvector_get\n");
     CVector *vec = cvector_create();
 
-    cvector_push(vec, "Hello");
+    char *str1 = malloc(6);
+    strcpy(str1, "Hello");
+    cvector_push(vec, str1);
 
 
     if (strcmp(cvector_get(vec, 0), "Hello") != 0) {
@@ -97,8 +118,13 @@ void test_cvector_get() {
 void test_cvector_set() {
     printf("Testing test_cvector_set\n");
     CVector *vec = cvector_create();
-    cvector_push(vec, "Hello");
-    cvector_set(vec, 0, "World");
+
+    char *str1 = malloc(6);
+    strcpy(str1, "Hello");
+    char *str2 = malloc(6);
+    strcpy(str2, "World");
+    cvector_push(vec, str1);
+    cvector_set(vec, 0, str2);
 
     if (strcmp(cvector_get(vec, 0), "World") != 0) {
         printf("FAILED: Vector data is not World\n");
@@ -121,9 +147,16 @@ void test_cvector_set() {
 void test_cvector_delete_last_item() {
     printf("Testing test_cvector_delete_last_item\n");
     CVector *vec = cvector_create();
-    cvector_push(vec, "Hello");
-    cvector_push(vec, "World");
-    cvector_push(vec, "!");
+
+    char *str1 = malloc(6);
+    strcpy(str1, "Hello");
+    char *str2 = malloc(6);
+    strcpy(str2, "World");
+    char *str3 = malloc(2);
+    strcpy(str3, "!");
+    cvector_push(vec, str1);
+    cvector_push(vec, str2);
+    cvector_push(vec, str3);
 
     cvector_delete(vec, 2);
 
@@ -154,9 +187,16 @@ void test_cvector_delete_last_item() {
 void test_cvector_delete_middle_item() {
     printf("Testing test_cvector_delete_middle_item\n");
     CVector *vec = cvector_create();
-    cvector_push(vec, "Hello");
-    cvector_push(vec, "World");
-    cvector_push(vec, "!");
+
+    char *str1 = malloc(6);
+    strcpy(str1, "Hello");
+    char *str2 = malloc(6);
+    strcpy(str2, "World");
+    char *str3 = malloc(2);
+    strcpy(str3, "!");
+    cvector_push(vec, str1);
+    cvector_push(vec, str2);
+    cvector_push(vec, str3);
 
     cvector_delete(vec, 1);
 
@@ -189,9 +229,16 @@ void test_cvector_delete_middle_item() {
 void test_cvector_delete_out_of_bounds() {
     printf("Testing test_cvector_delete_out_of_bounds\n");
     CVector *vec = cvector_create();
-    cvector_push(vec, "Hello");
-    cvector_push(vec, "World");
-    cvector_push(vec, "!");
+
+    char *str1 = malloc(6);
+    strcpy(str1, "Hello");
+    char *str2 = malloc(6);
+    strcpy(str2, "World");
+    char *str3 = malloc(2);
+    strcpy(str3, "!");
+    cvector_push(vec, str1);
+    cvector_push(vec, str2);
+    cvector_push(vec, str3);
 
     cvector_delete(vec, 3);
 
@@ -211,10 +258,17 @@ void test_cvector_delete_out_of_bounds() {
 void test_cvector_size() {
     printf("Testing test_cvector_size\n");
     CVector *vec = cvector_create();
-    cvector_push(vec, "Hello");
-    cvector_push(vec, "World");
-    cvector_push(vec, "!");
-    
+
+    char *str1 = malloc(6);
+    strcpy(str1, "Hello");
+    char *str2 = malloc(6);
+    strcpy(str2, "World");
+    char *str3 = malloc(2);
+    strcpy(str3, "!");
+    cvector_push(vec, str1);
+    cvector_push(vec, str2);
+    cvector_push(vec, str3);
+
     if(cvector_size(vec) != 3) {
         printf("FAILED: Vector size is not 3\n");
         return;

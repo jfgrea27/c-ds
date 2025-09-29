@@ -25,6 +25,16 @@ just run-test NAME_DS
 just run-tests
 ```
 
+## Memory leaks
+
+`valgrind` is used to check against any memory leaks on the libraries throught **integration tests**. Please run the following to get a full report:
+
+```sh
+# specific memory check
+just mem-check NAME_DS
+```
+
+
 ## Design of each data structure
 
 ### cvector
@@ -41,8 +51,10 @@ typedef struct {
 
 holds an array of pointers on the heap. This allows for allocation of any data type.
 
-Elements of the array can be added, updated, deleted.
+Notes:
+- Elements should be heaped; `CVector` does not allow adding stack elements.
+- Elements can be added, updated, deleted.
+- Whenever `CVector` is full (a.k.a. `CVector.size` == `CVector.capacity`), we `realloc` the heap memory holding the pointers to the underlining elements and double its size.
 
-Whenever `CVector` is full (a.k.a. `CVector.size` == `CVector.capacity`), we `realloc` the heap memory holding the pointers to the underlining elements and double its size.
+A full example of the `CVector` API in action can be seen in `src/cvector/main.c`.
 
-This allows for a dynamic allocation of memory given `CVector`'s caller.

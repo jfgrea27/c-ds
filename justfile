@@ -1,8 +1,8 @@
 # Build the main program
-build:
-    gcc -g -Isrc/include -Isrc/*/include \
+build: clean
+    gcc -O0 -g -Isrc/include -Isrc/*/include \
         src/main.c \
-        src/*/*.c \
+        $(ls src/*/*.c | grep -v 'main.c') \
         -o build/main
 
 # Run the main program
@@ -10,7 +10,7 @@ run: build
     ./build/main
 
 # Build all tests
-build-tests:
+build-tests: clean
     #!/bin/bash
     for module in src/*/; do
         module_name=$(basename $module)
@@ -18,20 +18,20 @@ build-tests:
             echo "Building tests for $module_name..."
             gcc -Isrc/include -Isrc/*/include \
                 -I"$module/include" \
-                "$module"/*.c \
+                $(ls "$module"/*.c | grep -v 'main.c') \
                 "test/$module_name"/*.c \
                 -o "build/test_$module_name"
         fi
     done
 
 # Build tests for a specific module
-build-test module:
+build-test module: clean
     #!/bin/bash
     if [ -d "test/{{module}}" ]; then
         echo "Building tests for {{module}}..."
         gcc -Isrc/include -Isrc/*/include \
             -Isrc/{{module}}/include \
-            src/{{module}}/*.c \
+            $(ls src/{{module}}/*.c | grep -v 'main.c')  \
             test/{{module}}/*.c \
             -o build/test_{{module}}
     else
@@ -52,6 +52,21 @@ run-tests: build-tests
 # Run tests for a specific module
 run-test module: (build-test module)
     ./build/test_{{module}}
+
+
+build-module module: clean
+    gcc -O0 -g -Isrc/include -Isrc/*/include \
+        src/{{module}}/*.c \
+        -o build/main_{{module}}
+
+# Run specific module main
+run-module module: build
+    ./build/main_{{module}}
+
+mem-check module: clean
+    just build-module {{module}}
+    valgrind --leak-check=full --track-origins=yes ./build/main_{{module}}
+
 
 clean:
     rm -f build/test_* build/main

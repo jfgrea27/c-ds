@@ -16,7 +16,8 @@
             pkgs.just 
             pkgs.stdenv 
             pkgs.gcc 
-            ];
+            pkgs.valgrind
+          ];
         };
       });
 }
