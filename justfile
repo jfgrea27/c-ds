@@ -16,7 +16,7 @@ build-tests: clean
         module_name=$(basename $module)
         if [ -d "test/$module_name" ]; then
             echo "Building tests for $module_name..."
-            gcc -Isrc/include -Isrc/*/include \
+            gcc -g -Isrc/include -Isrc/*/include \
                 -I"$module/include" \
                 $(ls "$module"/*.c | grep -v 'main.c') \
                 "test/$module_name"/*.c \
@@ -29,7 +29,7 @@ build-test module: clean
     #!/bin/bash
     if [ -d "test/{{module}}" ]; then
         echo "Building tests for {{module}}..."
-        gcc -Isrc/include -Isrc/*/include \
+        gcc -g -Isrc/include -Isrc/*/include \
             -Isrc/{{module}}/include \
             $(ls src/{{module}}/*.c | grep -v 'main.c')  \
             test/{{module}}/*.c \
@@ -69,5 +69,5 @@ mem-check module: clean
 
 
 clean:
-    rm -f build/test_* build/main
+    rm -rf build/test_* build/main
 
