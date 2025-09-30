@@ -3,7 +3,7 @@
 
 #include <stddef.h>
 
-const int NUMBER_BUCKETS = 10;
+#define NUMBER_BUCKETS 10
 
 typedef size_t (*hash_func_t)(const void *key);
 

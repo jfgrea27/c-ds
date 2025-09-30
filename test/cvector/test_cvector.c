@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "../../src/cvector/include/cvector.h"
+#include "cvector.h"
 
 void test_cvector_create() {
     printf("Testing test_cvector_create\n");

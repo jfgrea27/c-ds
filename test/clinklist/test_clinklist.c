@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "../../src/clinklist/include/clinklist.h"
+#include "clinklist.h"
 
 void test_clinklist_create() {
     printf("Testing test_clinklist_create\n");

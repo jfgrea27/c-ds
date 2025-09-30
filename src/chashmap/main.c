@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "include/chashmap.h"
+#include "chashmap.h"
 
 int main() {
     struct CHashMap *map = chashmap_create();

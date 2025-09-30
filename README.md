@@ -20,9 +20,9 @@ To run a test on a datastructure, run the following:
 
 ```sh
 # specific test
-just run-test NAME_DS
+make run-test MODULE=cvector
 # all tests
-just run-tests
+make run-tests
 ```
 
 ## Memory leaks
@@ -31,7 +31,7 @@ just run-tests
 
 ```sh
 # specific memory check
-just mem-check NAME_DS
+make mem-check MODULE=cvector
 ```
 
 

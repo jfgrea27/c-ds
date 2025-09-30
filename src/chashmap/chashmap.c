@@ -1,10 +1,12 @@
-#include "include/chashmap.h"
-// #include "include/clinklist.h"
+#include "chashmap.h"
+#include "clinklist.h"
 
 #include <stdint.h>
+#include <stdlib.h>
 
 
-int mem_hasher(void* p) {
+
+long unsigned int mem_hasher(const void* p) {
     if (p == NULL) {
         return -1;
     }

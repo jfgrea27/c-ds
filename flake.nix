@@ -13,7 +13,6 @@
       in {
         devShells.default = pkgs.mkShell {
           packages = [ 
-            pkgs.just 
             pkgs.stdenv 
             pkgs.gcc 
             pkgs.gdb

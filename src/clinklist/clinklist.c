@@ -1,4 +1,4 @@
-#include "include/clinklist.h"
+#include "clinklist.h"
 #include <stdlib.h>
 #include <stdio.h>
 
