@@ -7,6 +7,7 @@ This repository includes a library of data structures implemented in C from scra
 - [[cstack]]: a stack backed by [[cvector]].
 - [[cqueue]]: a queue backed by [[clinklist]].
 - [[chashmap]]: a hash map that uses [[clinklist]] for collision chaining.
+- [[cbst]]: a binary search tree.
 
 ** Repository structure
 
@@ -120,4 +121,16 @@ struct CHashMap {
 
 A full example of the `CHashMap` API in action can be seen in `src/chashmap/main.c`.
 
+*** cbst
 
+```c
+struct CBST {
+    struct CBSTNode *root;
+    size_t size;
+    compare_func_t compare;
+};
+```
+
+A binary search tree with user-provided comparison function. Supports insert, search, delete, min/max operations.
+
+A full example of the `CBST` API in action can be seen in `src/cbst/main.c`.
