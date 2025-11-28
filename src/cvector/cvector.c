@@ -80,7 +80,7 @@ void cvector_delete(struct CVector *vec, size_t index) {
         return;
 
     }
-    for (size_t i = index; i <= vec->size; i ++) {
+    for (size_t i = index; i < vec->size - 1; i++) {
         vec->data[i] = vec->data[i + 1];
     }
     vec->size -= 1;

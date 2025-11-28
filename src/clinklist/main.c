@@ -1,8 +1,14 @@
 #include "clinklist.h"
 #include <stdlib.h>
 #include <unistd.h>
-#include <malloc.h>
 #include <stdio.h>
+
+#ifdef __APPLE__
+#include <malloc/malloc.h>
+#define malloc_usable_size(ptr) malloc_size(ptr)
+#else
+#include <malloc.h>
+#endif
 
 /*
 * end-to-end test of cvector
