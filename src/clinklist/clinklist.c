@@ -82,6 +82,22 @@ void clinklist_delete_at_index(struct CLinkedList *clinklist, size_t index) {
     if (index >= clinklist_size(clinklist)) {
         return;
     }
+
+    if (index == 0) {
+        if (clinklist->data != NULL) {
+            free(clinklist->data);
+        }
+        if (clinklist->next != NULL) {
+            struct CLinkedList *next = clinklist->next;
+            clinklist->data = next->data;
+            clinklist->next = next->next;
+            free(next);
+        } else {
+            clinklist->data = NULL;
+        }
+        return;
+    }
+
     struct CLinkedList *current = clinklist;
     struct CLinkedList *previous = NULL;
     for (size_t i = 0; i < index; i++) {
@@ -89,13 +105,10 @@ void clinklist_delete_at_index(struct CLinkedList *clinklist, size_t index) {
         current = current->next;
     }
 
-
     previous->next = current->next;
-    // free the current
     if (current->data != NULL) {
         free(current->data);
         current->data = NULL;
-
     }
     free(current);
 }
